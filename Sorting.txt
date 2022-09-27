@@ -1,0 +1,54 @@
+  const [dropdown, setDropdown] = useState("ASC");
+    const [sortid, setSortId] = useState("ASC");    
+
+
+const Sorttable = (col) => {
+        console.log(col);
+        if (dropdown === "ASC") {
+            const sortedpage = [...careerdata].sort((a, b) =>
+                a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
+            );
+            setCareerData(sortedpage);
+            setDropdown("DSC");
+        }
+        if (dropdown === "DSC") {
+            const sortedpage = [...careerdata].sort((a, b) =>
+                a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
+            );
+            setCareerData(sortedpage);
+            setDropdown("ASC");
+        }
+    };
+
+    const sortingid = (col) => {
+
+        if (sortid === "ASC") {
+            const sortedpage = [...careerdata].sort((a, b) =>
+                a + [col] < b + [col] ? 1 : -1
+            )
+            setCareerData(sortedpage);
+            setSortId("DSC");
+        }
+        if (sortid === "DSC") {
+            const sortedpage = [...careerdata].sort((a, b) =>
+                a + [col] > b + [col] ? 1 : -1
+            );
+            setCareerData(sortedpage);
+            setSortId("ASC");
+        }
+    };
+
+
+
+                                                         <div>
+                                                            {" "}
+                                                            {dropdown === "ASC" ? (
+                                                                <span onClick={() => Sorttable("FirstName")}>
+                                                                    <BiDownArrow className={classes.drop} />
+                                                                </span>
+                                                            ) : (
+                                                                <span onClick={() => Sorttable("FirstName")}>
+                                                                    <BiUpArrow className={classes.drop} />
+                                                                </span>
+                                                            )}{" "}
+                                                        </div>
